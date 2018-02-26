@@ -2,3 +2,4 @@ theme: jekyll-theme-cayman
 title: GitConsensus
 description: GitConsensus automates open source software management.
 applink: https://github.com/apps/gitconsensus
+google_analytics: UA-114764767-1
