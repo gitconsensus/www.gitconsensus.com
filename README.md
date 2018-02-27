@@ -1,6 +1,6 @@
 GitConsensus makes it possible to automate project governance on GitHub by using "reactions" as a voting mechanism to automatically merge (or close) pull requests.
 
-![GitConsensus Merge Comment](/images/gitconsensus_merge_comment.png)
+![GitConsensus Merge Comment](/images/gitconsensus_merge_comment.png "GitConsensus Merge Comment")
 
 ## Installation
 
