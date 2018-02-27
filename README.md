@@ -2,6 +2,8 @@
 This simple project allows github projects to be automated. It uses "reaction" as a voting mechanism to automatically
 merge (or close) pull requests.
 
+![GitConsensus Merge Comment](/images/gitconsensus_merge_comment.png)
+
 ## Installation
 
 On the [GitConsensusApp Page on Github](https://github.com/apps/gitconsensus) find the `Configure` to start.
