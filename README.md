@@ -1,95 +1,97 @@
-GitConsensus makes it possible to automate project governance on GitHub by using "reactions" as a voting mechanism to automatically merge (or close) pull requests.
+<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
+<p align="center">
+  <a href="https://www.gatsbyjs.org">
+    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+  </a>
+</p>
+<h1 align="center">
+  Gatsby's default starter
+</h1>
 
-![GitConsensus Merge Comment](/images/gitconsensus_merge_comment.png "GitConsensus Merge Comment")
+Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
 
-## Installation
+_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
 
-On the [GitConsensusApp Page on Github](https://github.com/apps/gitconsensus) find the `Configure` button to start. From there you can select where to install it to.
+## 🚀 Quick start
 
-Once installed each repository which should be managed by GitConsensus needs a `.gitconsensus.yaml` file to define the consensus rules used by the project. Repositories without this file will simply be ignored. A variety of [example files](https://github.com/gitconsensus/gitconsensus_examples) exist to help get started, and these [recommended consensus rules](https://github.com/gitconsensus/gitconsensus_examples/blob/master/examples/recommended/.gitconsensus.yaml) should be a great starting point for most projects.
+1.  **Create a Gatsby site.**
 
+    Use the Gatsby CLI to create a new site, specifying the default starter.
 
-## Voting
+    ```sh
+    # create a new Gatsby site using the default starter
+    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
+    ```
 
-Votes are made by using reactions on the top level comment of the Pull Request.
+1.  **Start developing.**
 
-| Yes | No | Abstain |
-|-----|----|---------|
-| ![+1](https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png "+1") | ![-1](https://github.githubassets.com/images/icons/emoji/unicode/1f44e.png "+1") | ![confused](https://github.githubassets.com/images/icons/emoji/unicode/1f615.png "confused") |
+    Navigate into your new site’s directory and start it up.
 
-An `Abstain` vote counts when calculating quorum but is discarded when checking to see if the vote passed.
+    ```sh
+    cd my-default-starter/
+    gatsby develop
+    ```
 
-Voting for more than one option can be disabled on a per project basis.
+1.  **Open the source code and start editing!**
 
+    Your site is now running at `http://localhost:8000`!
 
-## Consensus Rules
+    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
 
-The file `.gitconsensus.yaml` needs to be placed in the repository to be managed. Any rule set to `false` or omitted will be skipped.
+    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
 
-A good place to start is with [these recommended settings](https://github.com/gitconsensus/gitconsensus_examples/blob/master/examples/recommended/.gitconsensus.yaml). The most likely initial changes that most projects will want to make are the `quorum` (the minimum number of votes needed before merging), the `merge_delay` (how minimum about of time the vote will stay open before merging), and the `threshold` (the percentage of `yes` votes needed).
+## 🧐 What's inside?
 
+A quick look at the top-level files and directories you'll see in a Gatsby project.
 
-```yaml
-# Which version of the consensus rules to use
-version: 3
+    .
+    ├── node_modules
+    ├── src
+    ├── .gitignore
+    ├── .prettierrc
+    ├── gatsby-browser.js
+    ├── gatsby-config.js
+    ├── gatsby-node.js
+    ├── gatsby-ssr.js
+    ├── LICENSE
+    ├── package-lock.json
+    ├── package.json
+    └── README.md
 
-# Add extra labels for the vote counts and age when merging
-extra_labels: false
+1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
 
-# Don't count any vote from a user who votes for multiple options
-prevent_doubles: true
+2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
 
-# The following only applies to pull requests
-pull_requests:
+3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
 
-  # Minimum number of voters
-  quorum: 5
+4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
 
-  # Required percentage of "yes" votes (ignoring abstentions)
-  threshold: 0.65
+5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
 
-  # Only process votes by contributors
-  contributors_only: false
+6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
 
-  # Only process votes by collaborators
-  collaborators_only: false
+7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
 
-  # When defined only process votes from these github users
-  whitelist:
-    - alice
-    - carol
+8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
 
-  # When defined votes from these users will be ignored
-  blacklist:
-    - bob
-    - dan
+9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
 
-  # Number of hours after last action (commit or opening the pull request) before issue can be merged
-  merge_delay: 12
+10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
 
-  # Number of votes from contributors at which the mergedelay gets ignored, assuming no negative votes.
-  delay_override: 6
+11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
-  # When `delayoverride` is set this value is the minimum hours without changes before the PR will be merged
-  merge_delay_min: 1
+12. **`README.md`**: A text file containing useful reference information about your project.
 
-  # Require this amount of time in hours before a PR with a license change will be merged.
-  licensed_delay: 72
+## 🎓 Learning Gatsby
 
-  # Require this amount of time in hours before a PR with a consensus change will be merged.
-  consensus_delay: 72
+Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
 
-  # Do not allow license changes to be merged.
-  license_lock: true
+- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
 
-  # Do not allow consensus changes to be merged.
-  consensus_lock: true
+- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
 
-  # Number of hours after last action (commit or opening the pull request) before issue is autoclosed
-  timeout: 720
-```
+## 💫 Deploy
 
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
 
-## Label Overrides
-
-Any Pull Request with a `WIP` or `DONTMERGE` label (case insensitive) will be skipped over.
+<!-- AUTO-GENERATED-CONTENT:END -->
