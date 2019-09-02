@@ -6,7 +6,7 @@ import Form from '../components/form'
 
 const FormPage = () => (
   <Layout>
-    <SEO title="Form" />
+    <SEO title="Config Builder" />
     <Form />
   </Layout>
 )

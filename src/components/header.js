@@ -43,7 +43,7 @@ const Header = ({ siteTitle }) => {
             <Button
               component="button"
               variant="outlined"
-              href="/form"
+              href="/configBuilder"
               color="secondary"
             >
               Template Builder
