@@ -39,11 +39,11 @@ const Layout = ({ children }) => {
           <main>{children}</main>
           <footer>
             <Typography variant="body1" gutterBottom>
-              © {new Date().getFullYear()} tedivm, Built with
-                {` `}
-              <a href="https://www.gatsbyjs.org">Gatsby</a>.
+              © {new Date().getFullYear()} <a href="https://projects.tedivm.com">Robert Hafner</a>
             </Typography>
-            <Typography variant="body1" gutterBottom>Homepage built by <a href="https://www.alilynne.com">AliLynne</a>.</Typography>
+            <Typography variant="body1" gutterBottom>Homepage built with
+                {` `}
+              <a href="https://www.gatsbyjs.org">Gatsby</a> by <a href="https://www.alilynne.com">AliLynne</a>.</Typography>
           </footer>
         </Container>
       </ThemeProvider>

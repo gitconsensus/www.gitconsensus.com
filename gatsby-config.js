@@ -8,6 +8,13 @@ module.exports = {
     `gatsby-theme-material-ui`,
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-plugin-fathom`,
+      options: {
+        trackingUrl: `//fathom.tdvm.net/tracker.js`,
+        sideId: `GJMAV`
+      }
+    },
+    {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [

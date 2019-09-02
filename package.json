@@ -10,6 +10,7 @@
     "gatsby": "^2.13.73",
     "gatsby-background-image": "^0.8.5",
     "gatsby-image": "^2.2.10",
+    "gatsby-plugin-fathom": "^1.1.0",
     "gatsby-plugin-manifest": "^2.2.6",
     "gatsby-plugin-offline": "^2.2.7",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
@@ -36,9 +37,9 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -o",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "gatsby develop -o -H 0.0.0.0",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
     "deploy:github": "gatsby build --prefix-paths && node ./scripts/deploy-github"
