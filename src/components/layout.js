@@ -14,9 +14,19 @@ import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
-import theme from '../theme'
+import myTheme from '../theme'
+import { makeStyles } from '@material-ui/core/styles'
 
 import Header from "./header"
+
+const useStyles = makeStyles(theme => ({
+  footer: {
+    paddingTop: theme.spacing(2)
+  },
+  main: {
+    paddingBottom: theme.spacing(2)
+  }
+}))
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -30,14 +40,15 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const classes = useStyles()
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={myTheme}>
         <CssBaseline />
         <Header siteTitle={data.site.siteMetadata.title} description={data.site.siteMetadata.description} />
         <Container maxWidth="md">
-          <main>{children}</main>
-          <footer>
+          <main className={classes.main}>{children}</main>
+          <footer className={classes.footer}>
             <Typography variant="body1" gutterBottom>
               © {new Date().getFullYear()} <a href="https://projects.tedivm.com">Robert Hafner</a>
             </Typography>
