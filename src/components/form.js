@@ -1,6 +1,8 @@
 import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
+import Button from '@material-ui/core/Button'
 import InputLabel from '@material-ui/core/InputLabel'
 import FormControl from '@material-ui/core/FormControl'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
@@ -38,7 +40,8 @@ class Form extends React.Component {
       consensusDelay: 96,
       contributorsOnly: false,
       collaboratorsOnly: false,
-      template: "recommended"
+      template: "recommended",
+      copied: false
     }
   }
 
@@ -52,6 +55,10 @@ class Form extends React.Component {
   handleToggle = (key, event) => {
     this.setState({ [key]: event.target.checked })
   }
+
+  handleCopy = () => {
+    this.setState({ copied: true });
+  };
 
   handleTemplate = (e) => {
     console.log(e.target.value)
@@ -158,7 +165,7 @@ class Form extends React.Component {
 
     return (
       <>
-        <form style={{ display: "flex", flexDirection: "column", marginTop: 100}} noValidate autoComplete="off">
+        <form style={{ display: "flex", flexDirection: "column", marginTop: 100, marginBottom: 30}} noValidate autoComplete="off">
           {/* <Typography align="center" variant="h4">Choose a Template</Typography>
           <FormControl component="fieldset">
             
@@ -181,7 +188,7 @@ class Form extends React.Component {
               <MenuItem value={"adventure"}>Choose your own adventure</MenuItem>
             </Select>
           </FormControl> */}
-          <Typography align="center" variant="h4">Config Builder</Typography>
+          <Typography align="center" variant="h4" style={{ marginBottom: 30}}>Config Builder</Typography>
           <FormControl component="fieldset">
             <FormLabel component="legend">Basic Info</FormLabel>
             <FormGroup row>
@@ -311,7 +318,11 @@ class Form extends React.Component {
             </FormGroup>
             
           </FormControl>
+          <CopyToClipboard onCopy={this.handleCopy} text={codeString}>
+            <Button style={{ marginTop: 30, marginRight: "auto", marginLeft: "auto" }} variant="outlined">Copy to Clipboard</Button>
+          </CopyToClipboard>
         </form>
+        
         <SyntaxHighlighter 
           customStyle={{
             padding: 0,
