@@ -181,7 +181,7 @@ class Form extends React.Component {
               <MenuItem value={"adventure"}>Choose your own adventure</MenuItem>
             </Select>
           </FormControl> */}
-          <Typography align="center" variant="h4">Template Builder</Typography>
+          <Typography align="center" variant="h4">Config Builder</Typography>
           <FormControl component="fieldset">
             <FormLabel component="legend">Basic Info</FormLabel>
             <FormGroup row>

@@ -11,7 +11,10 @@ import VoteImage from './voteImage'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: theme.spacing(10)
+    marginTop: theme.spacing(12)
+  },
+  title: {
+    marginBottom: theme.spacing(4)
   }
 }))
 
@@ -19,7 +22,7 @@ const Content = () => {
   const classes = useStyles()
     return (
       <Container maxWidth="md" className={classes.root}>
-        <Typography variant="h4" align="center">Getting Started</Typography>
+        <Typography className={classes.title} variant="h4" align="center">Getting Started</Typography>
         
         <Typography gutterBottom variant="body1">GitConsensus makes it possible to automate project governance on GitHub by using “reactions” as a voting mechanism to automatically merge (or close) pull requests.</Typography>
         <MergeImage />

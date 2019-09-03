@@ -2,7 +2,10 @@ module.exports = {
   pathPrefix: "/git_consensus",
   siteMetadata: {
     title: `GitConsensus`,
+    titleTemplate: `%s | Automate Open Source Software Management`,
     description: `Automate Open Source Software Management.`,
+    url: `https://www.gitconsensus.com`,
+    image: `/votes.png`
   },
   plugins: [
     `gatsby-theme-material-ui`,
@@ -37,8 +40,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
         start_url: `/`,
         icon: `src/images/logo.png`, // This path is relative to the root of the site.
       },

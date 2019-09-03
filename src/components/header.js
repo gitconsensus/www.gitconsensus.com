@@ -49,7 +49,7 @@ const Header = ({ siteTitle }) => {
               href="/configBuilder"
               color="secondary"
             >
-              Template Builder
+              Config Builder
               </Button>
             <Button
               component="button"

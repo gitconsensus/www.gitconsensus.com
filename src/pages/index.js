@@ -8,7 +8,7 @@ import 'typeface-roboto'
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Automate Open Source Software Management" description="Automate Open Source Software Management" />
+    <SEO title="GitConsensus" description="Automate Open Source Software Management" />
     <Content />
   </Layout>
 )
