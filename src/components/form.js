@@ -223,7 +223,7 @@ class Form extends React.Component {
           <FormControl component="fieldset">
             <FormLabel component="legend">Pull Requests</FormLabel>
             <FormGroup row style={{ marginBottom: 10 }}>
-              <Tooltip title="Don't count any vote from a user who votes for multiple options" placement="top">
+              <Tooltip title="Minimum number of voters" placement="top">
                 <TextField
                   id="quorum"
                   label="Quorum"
@@ -236,108 +236,128 @@ class Form extends React.Component {
                   }}
                 />
               </Tooltip>
-              <TextField
-                id="threshold"
-                label="Threshold"
-                className=''
-                value={this.state.threshold}
-                onChange={this.handleChange}
-                margin="normal"
-                style={{
-                  marginRight: 10
-                }}
-              />
-              <TextField
-                id="mergeDelay"
-                label="Merge Delay"
-                className=''
-                value={this.state.mergeDelay}
-                onChange={this.handleChange}
-                margin="normal"
-                style={{
-                  marginRight: 10
-                }}
-              />
-              <TextField
-                id="delayOverride"
-                label="Delay Override"
-                className=''
-                value={this.state.delayOverride}
-                onChange={this.handleChange}
-                margin="normal"
-                style={{
-                  marginRight: 10
-                }}
-              />
-              <TextField
-                id="timeout"
-                label="Timeout"
-                className=''
-                value={this.state.timeout}
-                onChange={this.handleChange}
-                margin="normal"
-                style={{
-                  marginRight: 10
-                }}
-              />
-              <TextField
-                id="consensusDelay"
-                label="Consensus Delay"
-                className=''
-                value={this.state.consensusDelay}
-                onChange={this.handleChange}
-                margin="normal"
-                style={{
-                  marginRight: 10
-                }}
-              />
+              <Tooltip title="Required percentage of 'yes' votes (ignoring abstentions)" placement="top">
+                <TextField
+                  id="threshold"
+                  label="Threshold"
+                  className=''
+                  value={this.state.threshold}
+                  onChange={this.handleChange}
+                  margin="normal"
+                  style={{
+                    marginRight: 10
+                  }}
+                />
+              </Tooltip>
+              <Tooltip title="Number of hours after last action (commit or opening the pull request) before issue can be merged" placement="top">
+                <TextField
+                  id="mergeDelay"
+                  label="Merge Delay"
+                  className=''
+                  value={this.state.mergeDelay}
+                  onChange={this.handleChange}
+                  margin="normal"
+                  style={{
+                    marginRight: 10
+                  }}
+                />
+              </Tooltip>
+              <Tooltip title="Number of votes at which the merge_delay gets ignored, assuming no negative votes." placement="top">
+                <TextField
+                  id="delayOverride"
+                  label="Delay Override"
+                  className=''
+                  value={this.state.delayOverride}
+                  onChange={this.handleChange}
+                  margin="normal"
+                  style={{
+                    marginRight: 10
+                  }}
+                />
+              </Tooltip>
+              <Tooltip title="Close pull requests that don't pass after seven days without any activity (new commits)." placement="top">
+                <TextField
+                  id="timeout"
+                  label="Timeout"
+                  className=''
+                  value={this.state.timeout}
+                  onChange={this.handleChange}
+                  margin="normal"
+                  style={{
+                    marginRight: 10
+                  }}
+                />
+              </Tooltip>
+              <Tooltip title="Time to wait (in hours) before merging any new consensus rules." placement="top">
+                <TextField
+                  id="consensusDelay"
+                  label="Consensus Delay"
+                  className=''
+                  value={this.state.consensusDelay}
+                  onChange={this.handleChange}
+                  margin="normal"
+                  style={{
+                    marginRight: 10
+                  }}
+                />
+              </Tooltip>
+              
             </FormGroup>
             <FormGroup row>
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={this.state.licenseLock}
-                    onChange={this.handleLicense}
-                    value="licenseLock"
-                    inputProps={{ 'aria-label': 'License Lock' }}
-                  />
-                }
-                label="License Lock"
-              />
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={this.state.consensusLock}
-                    onChange={this.handleConsensus}
-                    value="consensusLock"
-                    inputProps={{ 'aria-label': 'Consensus Lock' }}
-                  />
-                }
-                label="Consensus Lock"
-              />
+              <Tooltip title="Allow changes to the license" placement="top">
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={this.state.licenseLock}
+                      onChange={this.handleLicense}
+                      value="licenseLock"
+                      inputProps={{ 'aria-label': 'License Lock' }}
+                    />
+                  }
+                  label="License Lock"
+                />
+              </Tooltip>
+              <Tooltip title="Allow the consensus rules (this file) to be changed" placement="top">
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={this.state.consensusLock}
+                      onChange={this.handleConsensus}
+                      value="consensusLock"
+                      inputProps={{ 'aria-label': 'Consensus Lock' }}
+                    />
+                  }
+                  label="Consensus Lock"
+                />
+              </Tooltip>
+              <Tooltip title="Allow anyone to vote on this project, even if they've never contributed" placement="top">
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={this.state.contributorsOnly}
+                      onChange={this.handleContributors}
+                      value="contributorsOnly"
+                      inputProps={{ 'aria-label': 'Contributors Only' }}
+                    />
+                  }
+                  label="Contributors Only"
+                />
+              </Tooltip>
+              <Tooltip title="Put restrictions on who can vote" placement="top">
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={this.state.collaboratorsOnly}
+                      onChange={this.handleCollaborators}
+                      value="collaboratorsOnly"
+                      inputProps={{ 'aria-label': 'Collaborators Only' }}
+                    />
+                  }
+                  label="Collaborators Only"
+                />
+              </Tooltip>
               
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={this.state.contributorsOnly}
-                    onChange={this.handleContributors}
-                    value="contributorsOnly"
-                    inputProps={{ 'aria-label': 'Contributors Only' }}
-                  />
-                }
-                label="Contributors Only"
-              />
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={this.state.collaboratorsOnly}
-                    onChange={this.handleCollaborators}
-                    value="collaboratorsOnly"
-                    inputProps={{ 'aria-label': 'Collaborators Only' }}
-                  />
-                }
-                label="Collaborators Only"
-              />
+              
             </FormGroup>
             
           </FormControl>
