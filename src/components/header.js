@@ -25,6 +25,9 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     marginLeft: theme.spacing(1)
+  },
+  buttonInstall: {
+    marginLeft: theme.spacing(1)
   }
 }))
 
@@ -53,6 +56,7 @@ const Header = ({ siteTitle }) => {
               variant="outlined"
               href="https://github.com/apps/gitconsensus"
               color="secondary"
+              className={classes.buttonInstall}
               >
                 Install On GitHub
               </Button>
