@@ -191,7 +191,7 @@ class Form extends React.Component {
           <Typography align="center" variant="h4" style={{ marginBottom: 30}}>Config Builder</Typography>
           <FormControl component="fieldset">
             <FormLabel component="legend">Basic Info</FormLabel>
-            <FormGroup row>
+            <FormGroup row style={{ marginBottom: 10 }}>
               <Tooltip title="Add extra labels for the vote counts and age when merging" placement="top">
                 <FormControlLabel
                   control={
@@ -222,15 +222,20 @@ class Form extends React.Component {
           </FormControl>
           <FormControl component="fieldset">
             <FormLabel component="legend">Pull Requests</FormLabel>
-            <FormGroup row>
-              <TextField
-                id="quorum"
-                label="Quorum"
-                className=''
-                value={this.state.quorum}
-                onChange={this.handleChange}
-                margin="normal"
-              />
+            <FormGroup row style={{ marginBottom: 10 }}>
+              <Tooltip title="Don't count any vote from a user who votes for multiple options" placement="top">
+                <TextField
+                  id="quorum"
+                  label="Quorum"
+                  className=''
+                  value={this.state.quorum}
+                  onChange={this.handleChange}
+                  margin="normal"
+                  style={{
+                    marginRight: 10
+                  }}
+                />
+              </Tooltip>
               <TextField
                 id="threshold"
                 label="Threshold"
@@ -238,6 +243,9 @@ class Form extends React.Component {
                 value={this.state.threshold}
                 onChange={this.handleChange}
                 margin="normal"
+                style={{
+                  marginRight: 10
+                }}
               />
               <TextField
                 id="mergeDelay"
@@ -246,6 +254,9 @@ class Form extends React.Component {
                 value={this.state.mergeDelay}
                 onChange={this.handleChange}
                 margin="normal"
+                style={{
+                  marginRight: 10
+                }}
               />
               <TextField
                 id="delayOverride"
@@ -254,6 +265,9 @@ class Form extends React.Component {
                 value={this.state.delayOverride}
                 onChange={this.handleChange}
                 margin="normal"
+                style={{
+                  marginRight: 10
+                }}
               />
               <TextField
                 id="timeout"
@@ -262,7 +276,23 @@ class Form extends React.Component {
                 value={this.state.timeout}
                 onChange={this.handleChange}
                 margin="normal"
+                style={{
+                  marginRight: 10
+                }}
               />
+              <TextField
+                id="consensusDelay"
+                label="Consensus Delay"
+                className=''
+                value={this.state.consensusDelay}
+                onChange={this.handleChange}
+                margin="normal"
+                style={{
+                  marginRight: 10
+                }}
+              />
+            </FormGroup>
+            <FormGroup row>
               <FormControlLabel
                 control={
                   <Switch
@@ -285,14 +315,7 @@ class Form extends React.Component {
                 }
                 label="Consensus Lock"
               />
-              <TextField
-                id="consensusDelay"
-                label="Consensus Delay"
-                className=''
-                value={this.state.consensusDelay}
-                onChange={this.handleChange}
-                margin="normal"
-              />
+              
               <FormControlLabel
                 control={
                   <Switch
