@@ -1,5 +1,4 @@
 module.exports = {
-  pathPrefix: "/git_consensus",
   siteMetadata: {
     title: `GitConsensus`,
     titleTemplate: `%s | Automate Open Source Software Management`,
@@ -13,7 +12,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-fathom`,
       options: {
-        trackingUrl: `//fathom.tdvm.net/tracker.js`,
+        trackingUrl: `//fathom.tdvm.net/`,
         sideId: `GJMAV`
       }
     },
@@ -35,8 +34,8 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

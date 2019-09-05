@@ -3,7 +3,7 @@ const ghpages = require('gh-pages')
 ghpages.publish(
   'public',
   {
-    branch: 'public',
+    branch: 'gh-pages',
     repo: 'https://github.com/gitconsensus/www.gitconsensus.com'
   },
   () => {

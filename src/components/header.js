@@ -1,14 +1,14 @@
 import PropTypes from "prop-types"
 import React from "react"
 
-import logo from '../images/logo.png'
+import { useStaticQuery, graphql } from 'gatsby'
+import Img from "gatsby-image"
+
 import GatsbyLink from './link'
 
 import AppBar from '@material-ui/core/AppBar'
-import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
-import Link from '@material-ui/core/Link'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   link: {
-    display: "flex",
+    display: "inline-flex",
     alignItems: "center",
     flexGrow: 1
   },
@@ -28,19 +28,35 @@ const useStyles = makeStyles(theme => ({
   },
   buttonInstall: {
     marginLeft: theme.spacing(1)
+  },
+  avatar: {
+    padding: theme.spacing(2.2)
   }
 }))
 
 
 const Header = ({ siteTitle }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: {regex: "/logo/"}) {
+        id
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
   const classes = useStyles()
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="fixed">
         <Container maxWidth="md">
           <Toolbar disableGutters>
+            
             <GatsbyLink className={classes.link} to="/" color="secondary">
-              <Avatar className={classes.avatar} src={logo} alt="logo" />
+              <Img className={classes.avatar} fluid={data.file.childImageSharp.fluid} alt="logo" />
               <Typography variant="h6" className={classes.title}>{siteTitle}</Typography>
             </GatsbyLink>
             <Button
