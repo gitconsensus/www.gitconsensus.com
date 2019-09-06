@@ -39,8 +39,8 @@ const Header = ({ siteTitle }) => {
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: {regex: "/logo/"}) {
-        id
         childImageSharp {
+          id
           fluid {
             ...GatsbyImageSharpFluid
           }
