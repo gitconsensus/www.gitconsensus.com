@@ -7,19 +7,22 @@ import Container from '@material-ui/core/Container'
 export default () => {
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: {regex: "/merge/"}) {
-        id
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+      allImageSharp(filter: {original: {src: {regex: "/merge/"}}}) {
+        edges {
+          node {
+            id
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }
     }
   `)
   return(
+    console.log(data),
     <Container maxWidth="xs">
-      <Img fluid={data.file.childImageSharp.fluid} />
+      <Img fluid={data.allImageSharp.edges[0].node.fluid} />
     </Container>
     
   )

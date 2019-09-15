@@ -121,46 +121,46 @@ class Form extends React.Component {
 
   render() {
     const codeString = `
-    # Which version of the consensus rules to use
-    version: 3
+# Which version of the consensus rules to use
+version: 3
 
-    # Add extra labels for the vote counts and age when merging
-    extra_labels: ${this.state.extraLabels}
+# Add extra labels for the vote counts and age when merging
+extra_labels: ${this.state.extraLabels}
 
-    # Don't count any vote from a user who votes for multiple options
-    prevent_doubles: ${this.state.preventDoubles}
+# Don't count any vote from a user who votes for multiple options
+prevent_doubles: ${this.state.preventDoubles}
 
-    pull_requests:
+pull_requests:
 
-      # At least three people should sign off on any pull request.
-      quorum: ${this.state.quorum}
+  # At least three people should sign off on any pull request.
+  quorum: ${this.state.quorum}
 
-      # Required percentage of "yes" votes (ignoring abstentions). It's a good idea to give "no" votes more power.
-      threshold: ${this.state.threshold}
+  # Required percentage of "yes" votes (ignoring abstentions). It's a good idea to give "no" votes more power.
+  threshold: ${this.state.threshold}
 
-      # Number of hours after last action (commit or opening the pull request) before issue can be merged
-      merge_delay: ${this.state.mergeDelay}
+  # Number of hours after last action (commit or opening the pull request) before issue can be merged
+  merge_delay: ${this.state.mergeDelay}
 
-      # Number of votes at which the merge_delay gets ignored, assuming no negative votes.
-      delay_override: ${this.state.delayOverride}
+  # Number of votes at which the merge_delay gets ignored, assuming no negative votes.
+  delay_override: ${this.state.delayOverride}
 
-      # Close pull requests that don't pass after seven days without any activity (new commits).
-      timeout: ${this.state.timeout}
+  # Close pull requests that don't pass after seven days without any activity (new commits).
+  timeout: ${this.state.timeout}
 
-      # Do not allow changes to the license.
-      license_lock: ${this.state.licenseLock}
+  # Do not allow changes to the license.
+  license_lock: ${this.state.licenseLock}
 
-      # Allow the consensus rules (this file) to be changed.
-      consensus_lock: ${this.state.consensusLock}
+  # Allow the consensus rules (this file) to be changed.
+  consensus_lock: ${this.state.consensusLock}
 
-      # Wait for at least four days before merging any new consensus rules.
-      consensus_delay: ${this.state.consensusDelay}
+  # Wait for at least four days before merging any new consensus rules.
+  consensus_delay: ${this.state.consensusDelay}
 
-      # Allow anyone to vote on this project, even if they've never contributed.
-      contributors_only: ${this.state.contributorsOnly}
+  # Allow anyone to vote on this project, even if they've never contributed.
+  contributors_only: ${this.state.contributorsOnly}
 
-      # Don't put any restrictions on who can vote.
-      collaborators_only: ${this.state.collaboratorsOnly}
+  # Don't put any restrictions on who can vote.
+  collaborators_only: ${this.state.collaboratorsOnly}
     `
 
     return (
