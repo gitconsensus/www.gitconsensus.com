@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "gitconsensus-www",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "GitConsensus Website",
+  "version": "2.0.0",
+  "author": "Alison Lynne Thompson",
   "dependencies": {
     "@material-ui/core": "^4.3.3",
     "@material-ui/styles": "^4.3.3",
@@ -37,12 +37,12 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop -o",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "gatsby develop -o -H 0.0.0.0",
-    "serve": "gatsby serve",
+    "build": "npx gatsby build",
+    "develop": "npx gatsby develop -o",
+    "format": "npx prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npx gatsby develop -o -H 0.0.0.0",
+    "serve": "npx gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
-    "deploy:github": "gatsby build && node ./scripts/deploy-github"
+    "deploy:github": "npx gatsby build && node ./scripts/deploy-github"
   }
 }
