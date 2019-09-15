@@ -4,7 +4,7 @@ module.exports = {
     titleTemplate: `%s | Automate Open Source Software Management`,
     description: `Automate Open Source Software Management.`,
     url: `https://www.gitconsensus.com`,
-    image: `/votes.png`
+    image: `/gitconsensus_merge_comment.png`
   },
   plugins: [
     `gatsby-plugin-sharp`,
@@ -14,8 +14,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-fathom`,
       options: {
-        trackingUrl: `//fathom.tdvm.net/`,
-        sideId: `GJMAV`
+        trackingUrl: `fathom.tdvm.net`,
+        siteId: `GJMAV`
       }
     },
     {
