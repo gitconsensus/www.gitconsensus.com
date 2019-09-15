@@ -120,8 +120,7 @@ class Form extends React.Component {
   }
 
   render() {
-    const codeString = `
-# Uses Version 3 of the GitConsensus configuration format.
+    const codeString = `# Uses Version 3 of the .gitconsensus.yaml file format.
 version: 3
 
 # Add extra labels for the vote counts and age when merging.
@@ -197,7 +196,7 @@ pull_requests:
               <MenuItem value={"adventure"}>Choose your own adventure</MenuItem>
             </Select>
           </FormControl> */}
-          <Typography align="center" variant="h4" style={{ marginBottom: 30}}>Config Builder</Typography>
+          <Typography align="center" variant="h4" style={{ marginBottom: 30}}>Create Your .gitconsensus.yaml File</Typography>
           <FormControl component="fieldset">
             <FormLabel component="legend">Basic Info</FormLabel>
             <FormGroup row style={{ marginBottom: 10 }}>
