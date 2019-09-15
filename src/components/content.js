@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
 
-//import MergeImage from './mergeImage'
+import MergeImage from './mergeImage'
 import VoteImage from './voteImage'
 
 const useStyles = makeStyles(theme => ({
@@ -25,7 +25,7 @@ const Content = () => {
         <Typography className={classes.title} variant="h4" align="center">Getting Started</Typography>
         
         <Typography gutterBottom variant="body1">GitConsensus makes it possible to automate project governance on GitHub by using “reactions” as a voting mechanism to automatically merge (or close) pull requests.</Typography>
-        {/* <MergeImage /> */}
+        <MergeImage />
 
         <Typography variant="h5" gutterBottom>Installation</Typography>
         <Typography variant="body1" gutterBottom>On the <a href="https://github.com/gitconsensus/">GitConsensusApp Page on Github</a> find the Configure button to start. From there you can select where to install it to.</Typography>
