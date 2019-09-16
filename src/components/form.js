@@ -31,7 +31,7 @@ class Form extends React.Component {
       extraLabels: false,
       preventDoubles: true,
       quorum: 3,
-      threshold: 0.74,
+      threshold: 74,
       mergeDelay: 12,
       delayOverride: 6,
       timeout: 168,
