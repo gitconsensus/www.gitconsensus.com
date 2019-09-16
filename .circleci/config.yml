@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node
+    working_directory: ~/gatsby
+    environment:
+      GATSBY_BUILD_DIR: ~/gatsby/public
+    steps:
+      - run: npm install gatsby-cli
+      - checkout
+      - run: npm install
+      - run: gatsby build
