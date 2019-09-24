@@ -27,7 +27,7 @@ class Form extends React.Component {
       extraLabels: false,
       preventDoubles: true,
       quorum: 3,
-      threshold: 0.74,
+      threshold: 74,
       mergeDelay: 12,
       delayOverride: 6,
       timeout: 168,
@@ -59,46 +59,54 @@ class Form extends React.Component {
   
 
   render() {
-    const codeString = `
-# Which version of the consensus rules to use
+    const codeString = `# Uses Version 3 of the .gitconsensus.yaml file format.
 version: 3
 
-# Add extra labels for the vote counts and age when merging
+# Add extra labels for the vote counts and age when merging.
+# This can create a lot of extra labels.
 extra_labels: ${this.state.extraLabels}
 
-# Don't count any vote from a user who votes for multiple options
+# Remove votes from users who vote more than once.
 prevent_doubles: ${this.state.preventDoubles}
 
 pull_requests:
 
-  # At least three people should sign off on any pull request.
+  # Minimum number of votes before a Pull Request will be merged.
   quorum: ${this.state.quorum}
 
-  # Required percentage of "yes" votes (ignoring abstentions). It's a good idea to give "no" votes more power.
+  # Required percentage of 'yes' votes (ignoring abstentions) before a
+  # Pull Request will be merged.
   threshold: ${this.state.threshold}
 
-  # Number of hours after last action (commit or opening the pull request) before issue can be merged
+  # The number of hours after the Pull Request was opened or commited to
+  # before the Pull Request can be closed
   merge_delay: ${this.state.mergeDelay}
 
-  # Number of votes at which the merge_delay gets ignored, assuming no negative votes.
+  # Number of votes at which the merge_delay gets ignored, assuming no
+  # negative votes.
+  # This is useful for rapidly deploying fixes into production.
   delay_override: ${this.state.delayOverride}
 
-  # Close pull requests that don't pass after seven days without any activity (new commits).
+  # The number of hours after the Pull Request was opened or commited to
+  # which the Pull Request will be closed if it has not passed.
   timeout: ${this.state.timeout}
 
-  # Do not allow changes to the license.
+  # Whether to restrict changes to the license via GitConsensus.
   license_lock: ${this.state.licenseLock}
 
-  # Allow the consensus rules (this file) to be changed.
+  # Whether to restrict changes to the consensus rules via GitConsensus.
   consensus_lock: ${this.state.consensusLock}
 
-  # Wait for at least four days before merging any new consensus rules.
+  # The number of hours before a Pull Request that changes the consensus
+  # rules can be merged.
   consensus_delay: ${this.state.consensusDelay}
 
-  # Allow anyone to vote on this project, even if they've never contributed.
+  # Whether to restrict votes to only previous contributors or not.
+  # This does not limit who can make a PR.
   contributors_only: ${this.state.contributorsOnly}
 
-  # Don't put any restrictions on who can vote.
+  # Whether to restrict votes only to preapproved Github collaborators.
+  # This does not limit who can make a PR.
   collaborators_only: ${this.state.collaboratorsOnly}
     `
 
@@ -108,7 +116,7 @@ pull_requests:
           <FormControl component="fieldset">
             <FormLabel component="legend">Basic Info</FormLabel>
             <FormGroup row style={{ marginBottom: 10 }}>
-              <Tooltip title="Add extra labels for the vote counts and age when merging" placement="top">
+              <Tooltip title="Add extra labels for the vote counts and age when merging. This can result in a lot of labels." placement="top">
                 <FormControlLabel
                   control={
                     <Switch
@@ -121,7 +129,7 @@ pull_requests:
                   label="Extra Labels"
                 />
               </Tooltip>
-              <Tooltip title="Don't count any vote from a user who votes for multiple options" placement="top">
+              <Tooltip title="Remove votes from users who vote more than once." placement="top">
                 <FormControlLabel
                   control={
                     <Switch
@@ -139,7 +147,7 @@ pull_requests:
           <FormControl component="fieldset">
             <FormLabel component="legend">Pull Requests</FormLabel>
             <FormGroup row style={{ marginBottom: 10 }}>
-              <Tooltip title="Minimum number of voters" placement="top">
+              <Tooltip title="Minimum number of votes before a Pull Request will be merged." placement="top">
                 <TextField
                   id="quorum"
                   label="Quorum"
@@ -152,7 +160,7 @@ pull_requests:
                   }}
                 />
               </Tooltip>
-              <Tooltip title="Required percentage of 'yes' votes (ignoring abstentions)" placement="top">
+              <Tooltip title="Required percentage of 'yes' votes (ignoring abstentions) before a Pull Request will be merged." placement="top">
                 <TextField
                   id="threshold"
                   label="Threshold"
@@ -165,7 +173,7 @@ pull_requests:
                   }}
                 />
               </Tooltip>
-              <Tooltip title="Number of hours after last action (commit or opening the pull request) before issue can be merged" placement="top">
+              <Tooltip title="The number of hours after the Pull Request was opened or commited to before the Pull Request can be closed." placement="top">
                 <TextField
                   id="mergeDelay"
                   label="Merge Delay"
@@ -178,7 +186,7 @@ pull_requests:
                   }}
                 />
               </Tooltip>
-              <Tooltip title="Number of votes at which the merge_delay gets ignored, assuming no negative votes." placement="top">
+              <Tooltip title="Number of votes at which the merge_delay gets ignored, assuming no negative votes. This is useful for rapidly deploying fixes into production." placement="top">
                 <TextField
                   id="delayOverride"
                   label="Delay Override"
@@ -191,7 +199,7 @@ pull_requests:
                   }}
                 />
               </Tooltip>
-              <Tooltip title="Close pull requests that don't pass after seven days without any activity (new commits)." placement="top">
+              <Tooltip title="The number of hours after the Pull Request was opened or commited to which the Pull Request will be closed if it has not passed." placement="top">
                 <TextField
                   id="timeout"
                   label="Timeout"
@@ -204,7 +212,7 @@ pull_requests:
                   }}
                 />
               </Tooltip>
-              <Tooltip title="Time to wait (in hours) before merging any new consensus rules." placement="top">
+              <Tooltip title="The number of hours before a Pull Request that changes the consensus rules can be merged." placement="top">
                 <TextField
                   id="consensusDelay"
                   label="Consensus Delay"
@@ -217,10 +225,10 @@ pull_requests:
                   }}
                 />
               </Tooltip>
-              
+
             </FormGroup>
             <FormGroup row>
-              <Tooltip title="Allow changes to the license" placement="top">
+              <Tooltip title="Whether to restrict changes to the license via GitConsensus." placement="top">
                 <FormControlLabel
                   control={
                     <Switch
@@ -233,7 +241,7 @@ pull_requests:
                   label="License Lock"
                 />
               </Tooltip>
-              <Tooltip title="Allow the consensus rules (this file) to be changed" placement="top">
+              <Tooltip title="Whether to restrict changes to the consensus rules via GitConsensus." placement="top">
                 <FormControlLabel
                   control={
                     <Switch
@@ -246,7 +254,7 @@ pull_requests:
                   label="Consensus Lock"
                 />
               </Tooltip>
-              <Tooltip title="Allow anyone to vote on this project, even if they've never contributed" placement="top">
+              <Tooltip title="Whether to restrict votes to only previous contributors or not. This does not limit who can make a PR." placement="top">
                 <FormControlLabel
                   control={
                     <Switch
@@ -259,7 +267,7 @@ pull_requests:
                   label="Contributors Only"
                 />
               </Tooltip>
-              <Tooltip title="Put restrictions on who can vote" placement="top">
+              <Tooltip title="Whether to restrict votes only to preapproved Github collaborators. This does not limit who can make a PR." placement="top">
                 <FormControlLabel
                   control={
                     <Switch
@@ -272,17 +280,17 @@ pull_requests:
                   label="Collaborators Only"
                 />
               </Tooltip>
-              
-              
+
+
             </FormGroup>
-            
+
           </FormControl>
           <CopyToClipboard onCopy={this.handleCopy} text={codeString}>
             <Button style={{ marginTop: 30, marginRight: "auto", marginLeft: "auto" }} variant="outlined">Copy to Clipboard</Button>
           </CopyToClipboard>
         </form>
-        
-        <SyntaxHighlighter 
+
+        <SyntaxHighlighter
           customStyle={{
             padding: 20,
             fontSize: 16
