@@ -3,17 +3,13 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import Button from '@material-ui/core/Button'
-import InputLabel from '@material-ui/core/InputLabel'
 import FormControl from '@material-ui/core/FormControl'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormLabel from '@material-ui/core/FormLabel'
-import MenuItem from '@material-ui/core/MenuItem'
-import Select from '@material-ui/core/Select'
 import Switch from '@material-ui/core/Switch'
 import TextField from '@material-ui/core/TextField'
 import Tooltip from '@material-ui/core/Tooltip'
-import Typography from '@material-ui/core/Typography'
 
 
 class Form extends React.Component {
@@ -60,64 +56,7 @@ class Form extends React.Component {
     this.setState({ copied: true });
   };
 
-  handleTemplate = (e) => {
-    console.log(e.target.value)
-    switch(e.target.value) {
-      case "anarchy":
-        this.setState({
-          version: 3,
-          extraLabels: false,
-          preventDoubles: false,
-          quorum: 1,
-          threshold: 0.01,
-          mergeDelay: 1,
-          delayOverride: false,
-          timeout: 168,
-          licenseLock: true,
-          consensusLock: false,
-          consensusDelay: 1,
-          contributorsOnly: false,
-          collaboratorsOnly: false,
-          template: "anarchy"
-        })
-        break
-      case "autocracy":
-        this.setState({
-          version: 3,
-          extraLabels: false,
-          preventDoubles: true,
-          quorum: 1,
-          threshold: 0.01,
-          mergeDelay: 1,
-          delayOverride: false,
-          timeout: 168,
-          licenseLock: true,
-          consensusLock: false,
-          consensusDelay: 1,
-          contributorsOnly: false,
-          collaboratorsOnly: false,
-          template: "autocracy"
-        })
-        break
-      default:
-        this.setState({
-          version: 3,
-          extraLabels: false,
-          preventDoubles: true,
-          quorum: 3,
-          threshold: 0.74,
-          mergeDelay: 12,
-          delayOverride: 6,
-          timeout: 168,
-          licenseLock: true,
-          consensusLock: false,
-          consensusDelay: 96,
-          contributorsOnly: false,
-          collaboratorsOnly: false,
-          template: "recommended"
-        })
-    }
-  }
+  
 
   render() {
     const codeString = `# Uses Version 3 of the .gitconsensus.yaml file format.
@@ -174,29 +113,6 @@ pull_requests:
     return (
       <>
         <form style={{ display: "flex", flexDirection: "column", marginTop: 100, marginBottom: 30}} noValidate autoComplete="off">
-          {/* <Typography align="center" variant="h4">Choose a Template</Typography>
-          <FormControl component="fieldset">
-
-            <InputLabel htmlFor="template">Template</InputLabel>
-            <Select
-              value={this.state.template}
-              onChange={this.handleTemplate}
-              inputProps={{
-                name: 'template',
-                id: 'template',
-              }}
-            >
-              <MenuItem value={"anarchy"}>Anarchy</MenuItem>
-              <MenuItem value={"autocracy"}>Autocracy</MenuItem>
-              <MenuItem value={"consensus"}>Consensus</MenuItem>
-              <MenuItem value={"democracy"}>Democracy</MenuItem>
-              <MenuItem value={"meritocracy"}>Meritocracy</MenuItem>
-              <MenuItem value={"oligarchy"}>Oligarchy</MenuItem>
-              <MenuItem value={"recommended"}>Recommended</MenuItem>
-              <MenuItem value={"adventure"}>Choose your own adventure</MenuItem>
-            </Select>
-          </FormControl> */}
-          <Typography align="center" variant="h4" style={{ marginBottom: 30}}>Create Your .gitconsensus.yaml File</Typography>
           <FormControl component="fieldset">
             <FormLabel component="legend">Basic Info</FormLabel>
             <FormGroup row style={{ marginBottom: 10 }}>
@@ -376,7 +292,7 @@ pull_requests:
 
         <SyntaxHighlighter
           customStyle={{
-            padding: 0,
+            padding: 20,
             fontSize: 16
           }}
           language="yaml">
